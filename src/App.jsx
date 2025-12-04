@@ -3,6 +3,8 @@ import axios from "axios";
 import UploadForm from "./components/UploadForm";
 import ResultCard from "./components/ResultCard";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+
 export default function App() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -15,7 +17,7 @@ export default function App() {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/analyze",
+        `${API_URL}/api/analyze`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
